@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PulseAI — Doctor Whiteboard</title>
+<style>
+    :root {
+        --primary: #2563eb;
+        --bg: #f8fafc;
+        --border: #e2e8f0;
+        --canvas-border: #cbd5e1;
+        --danger: #ef4444;
+        --success: #10b981;
+    }
+    * { 
+        box-sizing: border-box; 
+        font-family: 'Segoe UI', system-ui, sans-serif; 
+    }
+    body { 
+        margin: 0; 
+        background-color: var(--bg); 
+        color: #334155; 
+    }
+    header {
+        background-color: var(--primary);
+        color: white;
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .toolbar {
+        background: white;
+        padding: 0.75rem 2rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: wrap;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .btn {
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        background: white;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+    .btn:hover { background: #f1f5f9; }
+    .btn.active { 
+        background: #e0e7ff; 
+        border-color: var(--primary); 
+        color: var(--primary); 
+    }
+    .btn-danger { 
+        background: var(--danger); 
+        color: white; 
+        border: none; 
+    }
+    .btn-danger:hover { background: #dc2626; }
+    .btn-success { 
+        background: var(--success); 
+        color: white; 
+        border: none; 
+    }
+    .btn-success:hover { background: #059669; }
+    
+    .color-picker {
+        display: flex;
+        gap: 0.5rem;
+        padding: 0 1rem;
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+    }
+    .color-btn {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: 2px solid white;
+        box-shadow: 0 0 0 1px var(--border);
+        cursor: pointer;
+        transition: transform 0.1s;
+    }
+    .color-btn.active { 
+        transform: scale(1.2); 
+        box-shadow: 0 0 0 2px var(--primary); 
+    }
+    
+    .size-picker {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .main-content {
+        padding: 1rem 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .canvas-container {
+        width: 100%;
+        height: 80vh;
+        background: white;
+        border: 2px solid var(--canvas-border);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+    canvas {
+        display: block;
+        cursor: crosshair;
+        touch-action: none; /* Prevent scroll on touch devices */
+    }
+    
+    .notes-section {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .notes-section h2 { 
+        margin-top: 0; 
+        font-size: 1.25rem; 
+        color: #1e293b; 
+        margin-bottom: 1rem; 
+    }
+    textarea {
+        width: 100%;
+        min-height: 120px;
+        padding: 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        resize: vertical;
+        font-family: inherit;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    textarea:focus { 
+        outline: none; 
+        border-color: var(--primary); 
+        box-shadow: 0 0 0 3px rgba(37,99,235,0.1); 
+    }
+    
+    #summary-box {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        border-radius: 6px;
+        color: #0369a1;
+        display: none;
+    }
+    #summary-box h3 { 
+        margin-top: 0; 
+        color: #075985; 
+        margin-bottom: 0.5rem; 
+    }
+    #summary-text { 
+        white-space: pre-wrap; 
+        line-height: 1.5; 
+    }
+</style>
+</head>
+<body>
+
+<header>PulseAI — Doctor Whiteboard</header>
+
+<div class="toolbar">
+    <button class="btn active" id="btn-pen">✏️ Pen</button>
+    <button class="btn" id="btn-eraser">🧹 Eraser</button>
+    
+    <div class="color-picker" id="color-picker">
+        <div class="color-btn active" data-color="black" style="background: black;"></div>
+        <div class="color-btn" data-color="#dc2626" style="background: #dc2626;"></div>
+        <div class="color-btn" data-color="#2563eb" style="background: #2563eb;"></div>
+        <div class="color-btn" data-color="#16a34a" style="background: #16a34a;"></div>
+        <div class="color-btn" data-color="#ea580c" style="background: #ea580c;"></div>
+        <div class="color-btn" data-color="#9333ea" style="background: #9333ea;"></div>
+    </div>
+    
+    <div class="size-picker">
+        <label for="brush-size">Size:</label>
+        <input type="range" id="brush-size" min="1" max="20" value="3">
+        <span id="size-val">3</span>
+    </div>
+    
+    <div style="flex-grow: 1;"></div>
+    
+    <button class="btn btn-danger" id="btn-clear">🗑️ Clear Canvas</button>
+    <button class="btn btn-success" id="btn-save">💾 Save as PNG</button>
+</div>
+
+<div class="main-content">
+    <div class="canvas-container" id="canvas-container">
+        <canvas id="whiteboard"></canvas>
+    </div>
+    
+    <div class="notes-section">
+        <h2>Consultation Notes</h2>
+        <textarea id="notes" placeholder="Type your consultation notes here..."></textarea>
+        <button class="btn" id="btn-done" style="background: var(--primary); color: white; border: none;">✓ Done</button>
+        
+        <div id="summary-box">
+            <h3>📝 Notes Summary</h3>
+            <div id="summary-text"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById('whiteboard');
+    const ctx = canvas.getContext('2d');
+    const container = document.getElementById('canvas-container');
+    
+    let isDrawing = false;
+    let currentTool = 'pen';
+    let currentColor = 'black';
+    let currentSize = 3;
+    let lastX = 0;
+    let lastY = 0;
+    
+    // Set initial canvas size
+    function initCanvas() {
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+        
+        // Fill white background so transparent background becomes white on export
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    
+    // Window resize handler (keep drawings while resizing)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.drawImage(canvas, 0, 0);
+
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+            
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(tempCanvas, 0, 0);
+        }, 200);
+    });
+    
+    window.addEventListener('load', initCanvas);
+    
+    // Get Coordinates (handles bounds relative to canvas element)
+    function getCoordinates(e) {
+        const rect = canvas.getBoundingClientRect();
+        let clientX = e.clientX;
+        let clientY = e.clientY;
+        
+        if (e.touches && e.touches.length > 0) {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+        }
+
+        return {
+            x: clientX - rect.left,
+            y: clientY - rect.top
+        };
+    }
+
+    // Drawing Logic
+    function startDrawing(e) {
+        isDrawing = true;
+        const coords = getCoordinates(e);
+        lastX = coords.x;
+        lastY = coords.y;
+        
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+    }
+    
+    function stopDrawing() {
+        if (!isDrawing) return;
+        isDrawing = false;
+        ctx.beginPath();
+    }
+    
+    function draw(e) {
+        if (!isDrawing) return;
+        
+        const coords = getCoordinates(e);
+        
+        ctx.lineWidth = currentSize;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        
+        if (currentTool === 'eraser') {
+            ctx.strokeStyle = 'white';
+        } else {
+            ctx.strokeStyle = currentColor;
+        }
+        
+        ctx.lineTo(coords.x, coords.y);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(coords.x, coords.y);
+    }
+    
+    // Mouse events
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+    
+    // Touch events for mobile/tablets
+    canvas.addEventListener('touchstart', (e) => { 
+        e.preventDefault(); 
+        startDrawing(e); 
+    }, {passive: false});
+    
+    canvas.addEventListener('touchmove', (e) => { 
+        e.preventDefault(); 
+        draw(e); 
+    }, {passive: false});
+    
+    canvas.addEventListener('touchend', stopDrawing);
+    
+    // Tools Actions
+    const btnPen = document.getElementById('btn-pen');
+    const btnEraser = document.getElementById('btn-eraser');
+    const colorBtns = document.querySelectorAll('.color-btn');
+    const sizeSlider = document.getElementById('brush-size');
+    const sizeVal = document.getElementById('size-val');
+    
+    btnPen.addEventListener('click', () => {
+        currentTool = 'pen';
+        btnPen.classList.add('active');
+        btnEraser.classList.remove('active');
+    });
+    
+    btnEraser.addEventListener('click', () => {
+        currentTool = 'eraser';
+        btnEraser.classList.add('active');
+        btnPen.classList.remove('active');
+    });
+    
+    colorBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Auto switch to pen when color is chosen
+            currentTool = 'pen';
+            btnPen.classList.add('active');
+            btnEraser.classList.remove('active');
+            
+            colorBtns.forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            currentColor = e.target.getAttribute('data-color');
+        });
+    });
+    
+    sizeSlider.addEventListener('input', (e) => {
+        currentSize = e.target.value;
+        sizeVal.textContent = currentSize;
+    });
+    
+    // Clear and Save actions
+    document.getElementById('btn-clear').addEventListener('click', () => {
+        if(confirm('Are you sure you want to clear the entire whiteboard?')) {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+    });
+    
+    document.getElementById('btn-save').addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.download = 'whiteboard.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+    
+    // Notes logic
+    const btnDone = document.getElementById('btn-done');
+    const summaryBox = document.getElementById('summary-box');
+    const summaryText = document.getElementById('summary-text');
+    const notesInput = document.getElementById('notes');
+    
+    btnDone.addEventListener('click', () => {
+        const text = notesInput.value.trim();
+        if (text) {
+            summaryText.textContent = text;
+            summaryBox.style.display = 'block';
+        } else {
+            summaryBox.style.display = 'none'; // Hide if empty
+        }
+    });
+</script>
+</body>
+</html>

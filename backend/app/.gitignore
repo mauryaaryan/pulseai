@@ -1,0 +1,7 @@
+healthcare.db
+__pycache__/
+*.pyc
+.env
+*.local
+node_modules/
+dist/
