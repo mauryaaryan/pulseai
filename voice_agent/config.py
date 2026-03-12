@@ -5,7 +5,7 @@ load_dotenv()
 
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'default-dev-secret-key')
-    DEBUG = os.getenv('FLASK_DEBUG', True)
+    DEBUG = os.getenv('FLASK_DEBUG', 'true').lower() in ('true', '1', 'yes')
     
     # Provider Settings
     ASR_PROVIDER = os.getenv('ASR_PROVIDER', 'openai') # or google

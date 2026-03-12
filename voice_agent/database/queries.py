@@ -27,6 +27,8 @@ def execute_query(query, params=(), fetchone=False, fetchall=False, commit=False
             
         return result
     except sqlite3.Error as e:
+        if commit:
+            conn.rollback()
         logger.error(f"Database error executing query '{query}': {e}")
         return None
     finally:

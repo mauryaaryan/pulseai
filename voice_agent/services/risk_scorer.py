@@ -80,7 +80,8 @@ class RiskScorer:
     def _calculate_duration_trend(self, symptoms: list) -> int:
         points = 0
         for s in symptoms:
-            if "day" in s['duration'] or "hour" in s['duration']:
+            duration = s.get('duration') or ''
+            if "day" in duration or "hour" in duration:
                 points += 50
         return min(points, 100)
 

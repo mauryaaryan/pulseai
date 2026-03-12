@@ -6,3 +6,11 @@ __pycache__/
 *.local
 node_modules/
 dist/
+# Virtual environment folders
+Lib/
+Scripts/
+Include/
+pyvenv.cfg
+.venv/
+venv/
+env/

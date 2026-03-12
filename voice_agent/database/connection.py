@@ -1,3 +1,4 @@
+import os
 import sqlite3
 from sqlite3 import Error
 from utils.logger import setup_logger
@@ -22,7 +23,8 @@ def init_db(db_uri):
     conn = get_db_connection(db_file)
     if conn:
         try:
-            with open('database/schema.sql', 'r') as f:
+            schema_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'database', 'schema.sql')
+            with open(schema_path, 'r') as f:
                 conn.executescript(f.read())
             logger.info("Database initialized successfully.")
         except FileNotFoundError:

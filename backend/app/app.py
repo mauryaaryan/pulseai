@@ -6,7 +6,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 # Add the project root and Database folder to path so imports resolve correctly
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT_DIR)
 sys.path.insert(0, os.path.join(ROOT_DIR, 'Database'))
 
@@ -102,7 +102,7 @@ def save_prescription():
             data.get('diagnosis'), medicines_list, data.get('notes')
         )
         if not email_sent:
-            return jsonify({"success": False, "message": "Saved but email failed."}), 500
+            return jsonify({"success": True, "message": "Prescription saved but email failed to send."}), 200
         return jsonify({"success": True, "message": "Prescription saved and email sent"}), 201
     except Exception as e:
         conn.rollback()
