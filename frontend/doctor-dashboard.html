@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - Doccure Clone</title>
+    <!-- Use FontAwesome for exact iconography mapping to provided image -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <header class="top-nav">
+        <div class="nav-brand">
+            DOCC<span>URE</span>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="index.html">Home <i class="fas fa-chevron-down"></i></a>
+            <a href="index.html#doctors" class="active">Features <i class="fas fa-chevron-down"></i></a>
+            <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
+            <a href="index.html#contact">Contact <i class="fas fa-chevron-down"></i></a>
+            <a href="patient-dashboard.html">Patients <i class="fas fa-chevron-down"></i></a>
+        </nav>
+        
+        <div class="nav-right">
+            <button class="nav-icon-btn"><i class="fas fa-search"></i></button>
+            <button class="nav-icon-btn" style="position:relative;">
+                <i class="far fa-bell"></i>
+                <span style="position:absolute; top:8px; right:8px; width:6px; height:6px; background:red; border-radius:50%;"></span>
+            </button>
+            <button class="nav-icon-btn"><i class="fas fa-th"></i></button>
+            <img src="https://ui-avatars.com/api/?name=Edalin+Hendry&background=random" alt="Profile" class="nav-profile-sm">
+        </div>
+    </header>
+
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar-wrapper">
+            <div class="sidebar-profile">
+                <!-- Blue Banner Background -->
+                <div class="profile-bg"></div>
+                <div class="profile-img-wrap">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="Dr Edalin Hendry">
+                    <div class="status-indicator"></div>
+                </div>
+                <h3>Dr Edalin Hendry</h3>
+                <p>BDS, MDS - Oral & Maxillofacial Surgery</p>
+                <div class="profile-badge">
+                    <span style="color:var(--primary-blue);">●</span> Dentist
+                </div>
+            </div>
+            
+            <div class="availability-wrap">
+                <label class="availability-label">Availability <span>*</span></label>
+                <select class="availability-select">
+                    <option>I am Available Now</option>
+                    <option>Away</option>
+                    <option>Busy</option>
+                </select>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li><a href="#" data-target="dashboard-view"><i class="fas fa-columns"></i> Dashboard</a></li>
+                <li><a href="#" data-target="requests-view"><i class="far fa-user"></i> Requests <span style="margin-left:auto; background:#ffb822; color:white; font-size:0.7rem; padding:2px 6px; border-radius:10px;">2</span></a></li>
+                <li><a href="#" data-target="schedule-view" class="active"><i class="far fa-calendar-alt"></i> Appointments</a></li>
+                <li><a href="#" data-target="timings-view"><i class="far fa-clock"></i> Available Timings</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content (Appointments List based on image) -->
+        <main class="main-content">
+            <section id="schedule-view" class="view-section active">
+                
+                <div class="content-header">
+                    <h2 class="content-title">Appointments</h2>
+                    <div class="content-controls">
+                        <input type="text" class="search-input" placeholder="Search">
+                        <div class="control-buttons">
+                            <button class="ctrl-btn" style="background:var(--primary-blue); color:white; border-color:var(--primary-blue);"><i class="fas fa-filter"></i></button>
+                            <button class="ctrl-btn"><i class="fas fa-th-large"></i></button>
+                            <button class="ctrl-btn"><i class="far fa-calendar-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filters-row">
+                    <div class="tab-pills">
+                        <button class="tab-pill active">Upcoming <span class="tab-count">21</span></button>
+                        <button class="tab-pill">Cancelled <span class="tab-count">16</span></button>
+                        <button class="tab-pill">Completed <span class="tab-count">214</span></button>
+                    </div>
+                    
+                    <div class="right-filters">
+                        <button class="filter-btn"><i class="far fa-calendar"></i> 12 Mar 26 - 12 Mar 26</button>
+                        <button class="filter-btn"><i class="fas fa-filter"></i> Filter By <i class="fas fa-chevron-down" style="font-size:0.7rem; margin-left:0.5rem;"></i></button>
+                    </div>
+                </div>
+
+                <div class="appointment-list">
+                    <!-- Appointment 1 -->
+                    <div class="appt-card">
+                        <div class="appt-patient">
+                            <img src="https://i.pravatar.cc/150?img=32" alt="Adrian" class="patient-img">
+                            <div class="patient-info">
+                                <span class="patient-id">#Apt0001</span>
+                                <h4>Adrian</h4>
+                            </div>
+                        </div>
+                        <div class="appt-time">
+                            <div class="time-row"><i class="far fa-clock"></i> 11 Nov 2024 10.45 AM</div>
+                            <div class="type-row">General Visit <span class="type-highlight">Video Call</span></div>
+                        </div>
+                        <div class="appt-contact">
+                            <div class="contact-row"><i class="far fa-envelope"></i> adran@example.com</div>
+                            <div class="contact-row"><i class="fas fa-phone-alt"></i> +1 504 368 6874</div>
+                        </div>
+                        <div class="appt-actions">
+                            <button class="action-icon"><i class="far fa-eye"></i></button>
+                            <button class="action-icon"><i class="fas fa-comment-dots"></i></button>
+                            <button class="action-icon"><i class="fas fa-times"></i></button>
+                            <button class="btn-start">Start Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Appointment 2 -->
+                    <div class="appt-card">
+                        <div class="appt-patient">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="Kelly" class="patient-img">
+                            <div class="patient-info">
+                                <span class="patient-id">#Apt0002</span>
+                                <h4>Kelly <span class="tag-new">New</span></h4>
+                            </div>
+                        </div>
+                        <div class="appt-time">
+                            <div class="time-row"><i class="far fa-clock"></i> 05 Nov 2024 11.50 AM</div>
+                            <div class="type-row">General Visit <span class="type-highlight">Audio Call</span></div>
+                        </div>
+                        <div class="appt-contact">
+                            <div class="contact-row"><i class="far fa-envelope"></i> kelly@example.com</div>
+                            <div class="contact-row"><i class="fas fa-phone-alt"></i> +1 832 891 8403</div>
+                        </div>
+                        <div class="appt-actions">
+                            <button class="action-icon"><i class="far fa-eye"></i></button>
+                            <button class="action-icon"><i class="fas fa-comment-dots"></i></button>
+                            <button class="action-icon"><i class="fas fa-times"></i></button>
+                            <button class="btn-start">Start Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Appointment 3 -->
+                    <div class="appt-card">
+                        <div class="appt-patient">
+                            <img src="https://i.pravatar.cc/150?img=8" alt="Samuel" class="patient-img">
+                            <div class="patient-info">
+                                <span class="patient-id">#Apt0003</span>
+                                <h4>Samuel</h4>
+                            </div>
+                        </div>
+                        <div class="appt-time">
+                            <div class="time-row"><i class="far fa-clock"></i> 27 Oct 2024 09.30 AM</div>
+                            <div class="type-row">General Visit <span class="type-highlight">Video Call</span></div>
+                        </div>
+                        <div class="appt-contact">
+                            <div class="contact-row"><i class="far fa-envelope"></i> samuel@example.com</div>
+                            <div class="contact-row"><i class="fas fa-phone-alt"></i> +1 749 104 6291</div>
+                        </div>
+                        <div class="appt-actions">
+                            <button class="action-icon"><i class="far fa-eye"></i></button>
+                            <button class="action-icon"><i class="fas fa-comment-dots"></i></button>
+                            <button class="action-icon"><i class="fas fa-times"></i></button>
+                            <button class="btn-start">Start Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Appointment 4 -->
+                    <div class="appt-card">
+                        <div class="appt-patient">
+                            <img src="https://i.pravatar.cc/150?img=9" alt="Catherine" class="patient-img">
+                            <div class="patient-info">
+                                <span class="patient-id">#Apt0004</span>
+                                <h4>Catherine</h4>
+                            </div>
+                        </div>
+                        <div class="appt-time">
+                            <div class="time-row"><i class="far fa-clock"></i> 18 Oct 2024 12.20 PM</div>
+                            <div class="type-row">General Visit <span class="type-highlight">Direct Visit</span></div>
+                        </div>
+                        <div class="appt-contact">
+                            <div class="contact-row"><i class="far fa-envelope"></i> catherine@example.com</div>
+                            <div class="contact-row"><i class="fas fa-phone-alt"></i> +1 584 920 7183</div>
+                        </div>
+                        <div class="appt-actions">
+                            <button class="action-icon"><i class="far fa-eye"></i></button>
+                            <button class="action-icon"><i class="fas fa-comment-dots"></i></button>
+                            <button class="action-icon"><i class="fas fa-times"></i></button>
+                            <button class="btn-start">Start Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Light/Dark Mode Toggle Mockup (right floating side) -->
+    <div style="position:fixed; right:0; top:50%; transform:translateY(-50%); background:white; padding:10px 5px; border-radius:10px 0 0 10px; box-shadow:-2px 0 10px rgba(0,0,0,0.1); display:flex; flex-direction:column; gap:10px;">
+        <button style="border:none; background:none; cursor:pointer; font-size:1.2rem; color:var(--text-muted);"><i class="far fa-moon"></i></button>
+        <button style="border:none; background:var(--primary-blue); color:white; width:35px; height:35px; border-radius:50%; cursor:pointer;"><i class="fas fa-sun"></i></button>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

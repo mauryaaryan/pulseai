@@ -1,0 +1,546 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-blue: #09e5ab; /* Keeping a secondary highlight color */
+    --primary-blue: #2e64fc; /* The main blue from the screenshot */
+    --hover-blue: #1b4cd3;
+    --text-dark: #272b41;
+    --text-muted: #757575;
+    --border-light: #f0f0f0;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --success: #00d0f1;
+    --warning: #ffb822;
+    --danger: #f83f37;
+    
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    
+    --shadow-main: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: var(--bg-light);
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+}
+
+/* Base Top Navigation Bar */
+.top-nav {
+    background: var(--white);
+    height: 80px;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.nav-brand span {
+    color: #09e5ab; /* Accenting the core brand */
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    margin-left: 3rem;
+    align-items: center;
+}
+
+.nav-menu a {
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    text-decoration: none;
+    position: relative;
+}
+
+.nav-menu a.active {
+    color: var(--primary-blue);
+}
+
+.nav-menu a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; /* Align with bottom border of nav */
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-blue);
+    border-radius: 3px 3px 0 0;
+}
+
+.nav-menu a i {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border-light);
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.2s;
+}
+
+.nav-icon-btn:hover {
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+.nav-profile-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--white);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+/* Dashboard Content Grid */
+.dashboard-wrapper {
+    max-width: 1400px;
+    margin: 110px auto 30px;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Sidebar Styling */
+.sidebar-wrapper {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.sidebar-profile {
+    position: relative;
+    text-align: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.profile-bg {
+    background: var(--primary-blue); /* Rich blue gradient/solid */
+    background-image: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="p" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M20 0L40 20L20 40L0 20Z" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23p)"/></svg>');
+    height: 120px;
+    width: 100%;
+}
+
+.profile-img-wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: -60px auto 1rem;
+    border-radius: 50%;
+    padding: 5px;
+    background: var(--white);
+}
+
+.profile-img-wrap img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    width: 18px;
+    height: 18px;
+    background: #00d0f1;
+    border: 3px solid var(--white);
+    border-radius: 50%;
+}
+
+.sidebar-profile h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.sidebar-profile p {
+    margin: 0.25rem 0 0.8rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.profile-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Availability Dropdown */
+.availability-wrap {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.availability-label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.availability-label span { color: var(--danger); }
+
+.availability-select {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.9rem;
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="%23757575" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 0.75rem center;
+    background-size: 16px;
+}
+
+/* Sidebar Navigation */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    border-bottom: 1px solid var(--border-light);
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.sidebar-menu a i {
+    width: 20px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.sidebar-menu a:hover, .sidebar-menu a.active {
+    color: var(--primary-blue);
+}
+
+.sidebar-menu a.active {
+    background: #f4f6fe; /* Light blue bg */
+}
+
+.sidebar-menu a.active i {
+    color: var(--primary-blue);
+}
+
+.sidebar-menu a.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--primary-blue);
+}
+
+/* Main Content Area */
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.content-title {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.content-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.search-input {
+    padding: 0.6rem 2.5rem 0.6rem 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    width: 250px;
+    font-family: inherit;
+    background: var(--white) url('data:image/svg+xml;utf8,<svg fill="%23757575" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>') no-repeat right 0.75rem center;
+    background-size: 18px;
+}
+
+.control-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.ctrl-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border-light);
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+/* Filters Row */
+.filters-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.tab-pills {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.tab-pill {
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border-light);
+    background: var(--white);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.tab-pill.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+}
+
+.tab-count {
+    background: #f0f0f0;
+    color: var(--text-dark);
+    padding: 0.1rem 0.4rem;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+}
+
+.tab-pill.active .tab-count {
+    background: rgba(255,255,255,0.2);
+    color: var(--white);
+}
+
+.right-filters {
+    display: flex;
+    gap: 1rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-light);
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+/* Appointment List Cards */
+.appointment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.appt-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: box-shadow 0.2s;
+}
+
+.appt-card:hover {
+    box-shadow: var(--shadow-main);
+}
+
+.appt-patient {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 25%;
+}
+
+.patient-img {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+}
+
+.patient-info h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.patient-id {
+    color: var(--primary-blue);
+    font-size: 0.75rem;
+    margin-bottom: 0.2rem;
+    display: block;
+}
+
+.tag-new {
+    background: #6a4bff;
+    color: white;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+.appt-time {
+    width: 25%;
+}
+
+.time-row {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.type-row {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.type-highlight {
+    color: var(--text-dark);
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+.appt-contact {
+    width: 25%;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.contact-row {
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.appt-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.action-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f4f6fe;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.action-icon:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.btn-start {
+    background: none;
+    border: none;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 1rem;
+}
+
+/* Ensure sub-sections are hidden by default based on data-targets */
+.view-section {
+    display: none;
+}
+.view-section.active {
+    display: block;
+}

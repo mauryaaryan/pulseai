@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - Doccure Clone</title>
+    <!-- Use FontAwesome for exact iconography mapping to provided image -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="dashboard.js" defer></script>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <header class="top-nav">
+        <div class="nav-brand">
+            DOCC<span>URE</span>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="index.html">Home <i class="fas fa-chevron-down"></i></a>
+            <a href="index.html#doctors">Features <i class="fas fa-chevron-down"></i></a>
+            <a href="about.html">About <i class="fas fa-chevron-down"></i></a>
+            <a href="index.html#contact">Contact <i class="fas fa-chevron-down"></i></a>
+            <a href="#" class="active">Patients <i class="fas fa-chevron-down"></i></a>
+        </nav>
+        
+        <div class="nav-right">
+            <button class="nav-icon-btn"><i class="fas fa-search"></i></button>
+            <button class="nav-icon-btn" style="position:relative;">
+                <i class="far fa-bell"></i>
+                <span style="position:absolute; top:8px; right:8px; width:6px; height:6px; background:red; border-radius:50%;"></span>
+            </button>
+            <button class="nav-icon-btn"><i class="fas fa-th"></i></button>
+            <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Profile" class="nav-profile-sm">
+        </div>
+    </header>
+
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar-wrapper">
+            <div class="sidebar-profile">
+                <!-- Blue Banner Background -->
+                <div class="profile-bg"></div>
+                <div class="profile-img-wrap">
+                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=random&size=150" alt="John Doe">
+                    <div class="status-indicator"></div>
+                </div>
+                <h3>John Doe</h3>
+                <p>Blood Type: O+ | DOB: 24 Jul 1983</p>
+                <div class="profile-badge">
+                    <span style="color:var(--primary-blue);">●</span> Patient ID PT0016
+                </div>
+            </div>
+            
+            <ul class="sidebar-menu" style="margin-top: 1rem;">
+                <li><a href="#" data-target="dashboard-view"><i class="fas fa-columns"></i> Dashboard</a></li>
+                <li><a href="#" data-target="appointment-view" class="active"><i class="far fa-calendar-alt"></i> My Appointments</a></li>
+                <li><a href="#" data-target="history-view"><i class="fas fa-file-medical-alt"></i> Medical Records</a></li>
+                <li><a href="#" data-target="payment-view"><i class="fas fa-file-invoice-dollar"></i> Invoices</a></li>
+                <li><a href="#" data-target="settings-view"><i class="fas fa-user-cog"></i> Profile Settings</a></li>
+                <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <section id="appointment-view" class="view-section active">
+                
+                <div class="content-header">
+                    <h2 class="content-title">Book an Appointment</h2>
+                </div>
+
+                <!-- Voice Agent Callout matching redesign aesthetic -->
+                <div style="background:var(--white); border:1px solid var(--border-light); border-radius:var(--radius-md); padding:2rem; margin-bottom:2rem; display:flex; gap:2rem; align-items:center; box-shadow:var(--shadow-main);">
+                    <div style="width:60px; height:60px; background:var(--primary-blue); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0;">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div>
+                        <h3 style="margin:0 0 0.5rem; color:var(--text-dark);">AI Voice Agent Consultation</h3>
+                        <p style="margin:0; color:var(--text-muted); font-size:0.9rem;">Too tired to type your symptoms? Have a conversation with our intelligent voice agent. We'll summarize your case and automatically book you with the best available doctor in our network.</p>
+                    </div>
+                    <button style="background:var(--primary-blue); color:white; border:none; padding:0.8rem 1.5rem; border-radius:var(--radius-sm); font-weight:500; cursor:pointer; min-width:150px;">Start Talking</button>
+                </div>
+
+                <div class="filters-row">
+                    <div class="tab-pills">
+                        <button class="tab-pill active">Available Doctors <span class="tab-count">24</span></button>
+                        <button class="tab-pill">My Favorites <span class="tab-count">3</span></button>
+                    </div>
+                    
+                    <div class="right-filters">
+                        <div class="search-input" style="width:auto; padding-right:1rem; background-image:none; padding-left:1rem;">
+                            <i class="fas fa-search" style="color:var(--text-muted); margin-right:0.5rem;"></i>
+                            <input type="text" placeholder="Search..." style="border:none; outline:none; font-family:inherit;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="appointment-list">
+                    <!-- Doctor Card 1 -->
+                    <div class="appt-card">
+                        <div class="appt-patient" style="width: 35%;">
+                            <img src="https://i.pravatar.cc/150?img=11" alt="Dr Edalin" class="patient-img" style="width:80px;height:80px;border-radius:50%;">
+                            <div class="patient-info">
+                                <h4>Dr. Edalin Hendry <i class="fas fa-check-circle" style="color:var(--success); font-size:0.8rem; margin-left:5px;"></i></h4>
+                                <span class="patient-id">BDS, MDS - Oral Surgery</span>
+                                <div style="color:var(--warning); font-size:0.8rem; margin-top:5px;">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> (35)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="appt-time" style="width:25%;">
+                            <div class="time-row"><i class="fas fa-map-marker-alt"></i> New York, USA</div>
+                            <div class="time-row" style="margin-top:0.5rem;"><i class="far fa-money-bill-alt"></i> $100 - $400</div>
+                        </div>
+                        <div class="appt-actions" style="width: 20%; display:flex; flex-direction:column; gap:10px;">
+                            <button style="width:100%; padding:0.6rem; border:2px solid var(--primary-blue); background:white; color:var(--primary-blue); border-radius:var(--radius-sm); font-weight:600; cursor:pointer;">View Profile</button>
+                            <button style="width:100%; padding:0.6rem; border:none; background:var(--primary-blue); color:white; border-radius:var(--radius-sm); font-weight:600; cursor:pointer;">Book Now</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Doctor Card 2 -->
+                    <div class="appt-card">
+                        <div class="appt-patient" style="width: 35%;">
+                            <img src="https://i.pravatar.cc/150?img=33" alt="Dr Darren" class="patient-img" style="width:80px;height:80px;border-radius:50%;">
+                            <div class="patient-info">
+                                <h4>Dr. Darren Elder <i class="fas fa-check-circle" style="color:var(--success); font-size:0.8rem; margin-left:5px;"></i></h4>
+                                <span class="patient-id">BDS, MDS - Periodontology</span>
+                                <div style="color:var(--warning); font-size:0.8rem; margin-top:5px;">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (66)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="appt-time" style="width:25%;">
+                            <div class="time-row"><i class="fas fa-map-marker-alt"></i> Florida, USA</div>
+                            <div class="time-row" style="margin-top:0.5rem;"><i class="far fa-money-bill-alt"></i> $50 - $300</div>
+                        </div>
+                        <div class="appt-actions" style="width: 20%; display:flex; flex-direction:column; gap:10px;">
+                            <button style="width:100%; padding:0.6rem; border:2px solid var(--primary-blue); background:white; color:var(--primary-blue); border-radius:var(--radius-sm); font-weight:600; cursor:pointer;">View Profile</button>
+                            <button style="width:100%; padding:0.6rem; border:none; background:var(--primary-blue); color:white; border-radius:var(--radius-sm); font-weight:600; cursor:pointer;">Book Now</button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

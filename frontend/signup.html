@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up - Pulseai</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: var(--bg-color);
+            background-image: linear-gradient(to right, #f3f4f6 1px, transparent 1px), linear-gradient(to bottom, #f3f4f6 1px, transparent 1px);
+            background-size: 40px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .auth-container {
+            width: 100%;
+            max-width: 480px;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container fade-in">
+        <div class="text-center" style="margin-bottom: 2rem;">
+            <div class="logo" style="justify-content: center; font-size: 1.5rem;"><a href="index.html" style="text-decoration:none; color:inherit;">Pulse<span class="logo-highlight">ai</span></a></div>
+        </div>
+
+        <div class="card" style="padding: 3rem; background: rgba(255, 255, 255, 0.95);">
+            <h2 style="font-size:1.75rem; margin-bottom:0.5rem; text-align:center;">Create an account</h2>
+            <p class="card-subtitle text-center" style="margin-bottom:2.5rem; color:var(--text-muted)">Start building reliable workflows today.</p>
+            
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 2rem; background: #f3f4f6; padding: 0.25rem; border-radius: var(--radius-md);">
+                <button type="button" id="tabPatient" onclick="setRole('patient')" style="flex: 1; padding: 0.75rem; border: none; border-radius: var(--radius-sm); font-weight: 500; cursor: pointer; transition: 0.3s; background: white; color: var(--primary-color); box-shadow: var(--shadow-sm);">Patient Sign Up</button>
+                <button type="button" id="tabDoctor" onclick="setRole('doctor')" style="flex: 1; padding: 0.75rem; border: none; border-radius: var(--radius-sm); font-weight: 500; cursor: pointer; transition: 0.3s; background: transparent; color: var(--text-muted);">Doctor Sign Up</button>
+            </div>
+
+            <form id="signupForm">
+                <input type="hidden" id="signupRole" value="patient">
+                <div class="input-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="John Doe" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="john@example.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <p style="font-size:0.8rem; color:var(--text-light); margin-bottom:1.5rem;">By signing up, you agree to our Terms of Service and Privacy Policy.</p>
+                <button type="submit" class="btn-primary" style="width:100%" id="signupBtnText">Create Patient Account</button>
+            </form>
+            
+            <p class="text-center" style="margin-top:2rem; font-size:0.9rem;">Already have an account? <a href="login.html" class="text-highlight">Sign in</a></p>
+        </div>
+    </div>
+
+    <script>
+        function setRole(role) {
+            document.getElementById('signupRole').value = role;
+            
+            const btnPatient = document.getElementById('tabPatient');
+            const btnDoctor = document.getElementById('tabDoctor');
+            const submitBtn = document.getElementById('signupBtnText');
+
+            if (role === 'patient') {
+                btnPatient.style.background = 'white';
+                btnPatient.style.color = 'var(--primary-color)';
+                btnPatient.style.boxShadow = 'var(--shadow-sm)';
+                
+                btnDoctor.style.background = 'transparent';
+                btnDoctor.style.color = 'var(--text-muted)';
+                btnDoctor.style.boxShadow = 'none';
+
+                submitBtn.innerHTML = 'Create Patient Account';
+            } else {
+                btnDoctor.style.background = 'white';
+                btnDoctor.style.color = 'var(--primary-color)';
+                btnDoctor.style.boxShadow = 'var(--shadow-sm)';
+                
+                btnPatient.style.background = 'transparent';
+                btnPatient.style.color = 'var(--text-muted)';
+                btnPatient.style.boxShadow = 'none';
+
+                submitBtn.innerHTML = 'Create Doctor Account';
+            }
+        }
+
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const role = document.getElementById('signupRole').value;
+            
+            btn.innerHTML = 'Creating account...';
+            btn.style.opacity = '0.7';
+
+            setTimeout(() => {
+                if (role === 'doctor') {
+                    window.location.href = 'doctor-dashboard.html';
+                } else {
+                    window.location.href = 'patient-dashboard.html';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

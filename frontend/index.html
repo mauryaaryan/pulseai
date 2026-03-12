@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulseai - Smarter Healthcare</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">Pulse<span class="logo-highlight">ai</span></a></div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px; margin-left:4px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <a href="#doctors" class="nav-link">Features <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px; margin-left:4px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <a href="about.html" class="nav-link">About <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px; margin-left:4px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="login.html" class="btn-teal-sm">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="glass-hero" id="platform">
+            <div class="hero-container">
+                <div class="hero-left fade-in">
+                    <div class="pill-badge">PULSEAI</div>
+                    <h1>AI-Powered Healthcare<br>for patients<br>and doctors</h1>
+                    <p class="hero-subtitle">Bridge the gap between patients and doctors. Getting medical help should be simple, fast, and stress-free for everyone, regardless of your schedule.</p>
+                </div>
+                
+                <div class="hero-right fade-in-delay">
+                    <div class="card" style="padding: 2.5rem; width:100%; max-width: 450px; margin-left: auto; background: white; border: 1px solid var(--border-color); border-radius: var(--radius-xl);">
+                        <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem;">Create an account</h3>
+                        <p style="color:var(--text-muted); margin-bottom: 2rem; font-size: 0.9rem;">Start building reliable workflows today.</p>
+                        
+                        <form action="patient-dashboard.html" style="display:flex; flex-direction:column; gap:1.5rem;">
+                            <div>
+                                <label style="font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Full Name</label>
+                                <input type="text" placeholder="John Doe" required style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border-color); border-radius:var(--radius-md); background:#fdfdfd;">
+                            </div>
+                            
+                            <div>
+                                <label style="font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Email Address</label>
+                                <input type="email" placeholder="john@example.com" required style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border-color); border-radius:var(--radius-md); background:#fdfdfd;">
+                            </div>
+                            
+                            <div>
+                                <label style="font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Password</label>
+                                <input type="password" placeholder="••••••••" required style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border-color); border-radius:var(--radius-md); background:#fdfdfd;">
+                            </div>
+                            
+                            <p style="font-size:0.75rem; color:var(--text-light); margin-top:0.5rem;">By signing up, you agree to our Terms of Service.</p>
+                            
+                            <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">Sign up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features and Support -->
+        <section class="section-container" id="doctors">
+            <div class="section-header slide-up">
+                <span class="section-subtitle">PLATFORM OVERVIEW</span>
+                <h2 class="section-title">Everything you need for a stress-free experience</h2>
+                <p style="max-width: 600px; margin: 0 auto; color: var(--text-muted);">From the moment you feel unwell to the moment you receive your prescription, we are with you every step of the way.</p>
+            </div>
+            
+            <div class="fs-grid slide-up" style="margin-bottom: 4rem;">
+                <!-- Box 1: Features -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-label">CAPABILITIES</span>
+                        <h3>Platform Features</h3>
+                    </div>
+                    <ul class="feature-list" style="margin-top:0.5rem;">
+                        <li><span class="emoji">📋</span> Book doctor appointments easily</li>
+                        <li><span class="emoji">🤖</span> AI chat collects your symptoms</li>
+                        <li><span class="emoji">✅</span> View & track upcoming appointments</li>
+                        <li><span class="emoji">⚡</span> Faster care if your case is urgent</li>
+                        <li><span class="emoji">📄</span> Doctor pre-informed before your visit</li>
+                        <li><span class="emoji">🖊️</span> Visual explanations during consultation</li>
+                        <li><span class="emoji">💊</span> Prescription sent straight to your email</li>
+                    </ul>
+                </div>
+
+                <!-- Box 2: Support -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-label">ALWAYS AVAILABLE</span>
+                        <h3>Services and Support</h3>
+                    </div>
+                    <ul class="feature-list" style="margin-top:0.5rem;">
+                        <li><span class="emoji">🕐</span> 24/7 AI chat assistance</li>
+                        <li><span class="emoji">📧</span> Email support</li>
+                        <li><span class="emoji">🔄</span> Appointment reschedule help</li>
+                        <li><span class="emoji">💊</span> Prescription query support</li>
+                        <li><span class="emoji">👨‍⚕️</span> Doctor contact via platform</li>
+                        <li><span class="emoji">❓</span> FAQs & help center</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step by step Process match -->
+        <section class="process" style="background:#fff; border-top:1px solid var(--border-color); padding-top:4rem;">
+            <div class="section-container" style="padding: 0;">
+                <div class="section-header text-center slide-up">
+                    <span class="section-subtitle">HOW IT WORKS</span>
+                    <h2 class="section-title">Step by step process to use the website</h2>
+                    <p style="max-width:600px; margin:0 auto; color:var(--text-muted)">Get medical help in four simple, fast, and stress-free steps.</p>
+                </div>
+                
+                <div class="fs-grid slide-up" style="margin-top:4rem;">
+                    <div class="step-card">
+                        <div class="step-icon" style="color:#2563eb; background:#eff6ff">
+                            <span style="font-size: 1.5rem;">🤖</span>
+                        </div>
+                        <div class="step-content">
+                            <h3>1. AI Symptom Check</h3>
+                            <p style="margin-bottom:1rem">Our AI chat seamlessly collects your symptoms and history before you even book.</p>
+                            <div class="step-tags">
+                                <span class="tag">AI CHAT</span>
+                                <span class="tag">SYMPTOMS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-icon" style="color:#8b5cf6; background:#f5f3ff">
+                            <span style="font-size: 1.5rem;">📋</span>
+                        </div>
+                        <div class="step-content">
+                            <h3>2. Browse and Book</h3>
+                            <p style="margin-bottom:1rem">Book doctor appointments easily. Get faster care if your case is marked urgent.</p>
+                            <div class="step-tags">
+                                <span class="tag">BOOKING</span>
+                                <span class="tag">FAST TRACK</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-icon" style="color:#0ea5e9; background:#e0f2fe">
+                            <span style="font-size: 1.5rem;">👨‍⚕️</span>
+                        </div>
+                        <div class="step-content">
+                            <h3>3. Smart Consultation</h3>
+                            <p style="margin-bottom:1rem">Your doctor is pre-informed about your case. Receive visual explanations during your session.</p>
+                            <div class="step-tags">
+                                <span class="tag">CONSULTATION</span>
+                                <span class="tag">PRE-INFORMED</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-icon" style="color:#ec4899; background:#fce7f3">
+                            <span style="font-size: 1.5rem;">💊</span>
+                        </div>
+                        <div class="step-content">
+                            <h3>4. Instant Prescription</h3>
+                            <p style="margin-bottom:1rem">Your prescription is sent straight to your email immediately after the visit.</p>
+                            <div class="step-tags">
+                                <span class="tag">PRESCRIPTION</span>
+                                <span class="tag">EMAIL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter" id="contact" style="background:#f9fafb; border-top:1px solid var(--border-color);">
+            <div class="newsletter-content slide-up">
+                <span class="section-subtitle">STAY INFORMED</span>
+                <h2>Subscribe for more information</h2>
+                <p style="margin-top:0.5rem">Get the latest health updates directly to your inbox.</p>
+                <form id="subscribeForm" class="subscribe-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo">Pulse<span class="logo-highlight">ai</span></div>
+            <p style="color:var(--text-light); margin-top:0.5rem;">&copy; 2026 Pulseai. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

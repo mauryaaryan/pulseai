@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Pulseai</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .about-hero {
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+        }
+        .about-section {
+            padding: 2rem 2rem 4rem;
+        }
+        .content-card {
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.7);
+        }
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .value-card {
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        .about-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .about-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+        .about-list li {
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            font-size: 1.05rem;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">Pulse<span class="logo-highlight">ai</span></a></div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px; margin-left:4px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <a href="index.html#doctors" class="nav-link">Features <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px; margin-left:4px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <a href="about.html" class="nav-link" style="color:var(--primary-color);">About <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px; margin-left:4px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="index.html#login" class="nav-link-plain">Sign in</a>
+                <a href="index.html#contact" class="btn-outline-sm">Talk to sales</a>
+                <a href="index.html#signup" class="btn-teal-sm">Start free &rarr;</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Title Hero Area -->
+        <section class="about-hero glass-hero">
+            <div class="section-container">
+                <div class="pill-badge" style="margin: 0 auto 1.5rem;">Who We Are</div>
+                <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">About <span class="text-gradient">Pulseai</span></h1>
+                <p class="hero-subtitle" style="margin: 0 auto; max-width: 800px;">
+                    🏥 We are Pulseai — a next-generation AI-powered healthcare platform designed to bridge the gap between patients and doctors. We believe that getting medical help should be simple, fast, and stress-free for everyone, regardless of where you are or how busy your schedule is.
+                </p>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="section-container">
+                
+                <!-- Mission and Story Grid -->
+                <div class="fs-grid">
+                    <div class="card feature-card lift-on-hover content-card">
+                        <div class="card-header">
+                            <div class="icon-wrapper feature-icon">🎯</div>
+                            <h3>Our Mission</h3>
+                        </div>
+                        <p class="about-text">Our mission is simple — make healthcare accessible, efficient, and human. We are on a journey to eliminate the frustration of long waiting rooms, confusing appointment systems, and lost prescriptions by putting the power of modern technology in the hands of both patients and doctors.</p>
+                    </div>
+
+                    <div class="card support-card lift-on-hover content-card">
+                        <div class="card-header">
+                            <div class="icon-wrapper support-icon">💡</div>
+                            <h3>Our Story</h3>
+                        </div>
+                        <p class="about-text">Pulseai was born out of a real frustration. We watched patients sit in waiting rooms for hours, only to spend 5 minutes with a doctor who had no context about their condition. We watched doctors repeat the same intake questions hundreds of times a day. We knew there had to be a better way.</p>
+                        <p class="about-text" style="font-weight: 600;">So we built one.</p>
+                        <p class="about-text">By combining artificial intelligence with a clean, simple interface, we created a system where patients feel heard before they even walk in the door — and doctors can focus entirely on what they do best: healing people.</p>
+                    </div>
+                </div>
+
+                <!-- What We Do -->
+                <div class="card glass-card content-card" style="margin-top: 3rem;">
+                    <div class="section-header text-center">
+                        <h2 class="section-title">What We Do</h2>
+                    </div>
+                    <p class="about-text text-center" style="max-width: 800px; margin: 0 auto;">⚙️ Pulseai is a complete healthcare experience in one platform. From the moment you feel unwell to the moment you receive your prescription, we are with you every step of the way.</p>
+                    
+                    <ul class="about-list" style="max-width: 700px; margin: 2.5rem auto 0;">
+                        <li><span class="emoji">🔍</span> Patients can browse and book doctors in seconds.</li>
+                        <li><span class="emoji">🤖</span> Our AI receptionist collects your symptoms before your visit.</li>
+                        <li><span class="emoji">📄</span> Doctors receive a smart summary of your case in advance.</li>
+                        <li><span class="emoji">⚡</span> Urgent cases are automatically prioritized so no one waits when it truly matters.</li>
+                        <li><span class="emoji">💊</span> After consultation, your prescription is delivered directly to your email.</li>
+                    </ul>
+                </div>
+
+                <!-- Why Choose Us -->
+                <div class="card glass-card content-card" style="margin-top: 3rem; background: var(--bg-hover);">
+                    <div class="section-header text-center">
+                        <h2 class="section-title">Why Choose Us</h2>
+                    </div>
+                    <div class="value-grid">
+                        <div class="value-card glass-card">
+                            <div style="font-size:2rem; margin-bottom:1rem;">🚀</div>
+                            <h4 style="font-size:1.1rem; margin-bottom:0.8rem; color:var(--text-color);">No more long queues</h4>
+                            <p class="text-muted" style="font-size:0.95rem;">Book your slot online in seconds</p>
+                        </div>
+                        <div class="value-card glass-card">
+                            <div style="font-size:2rem; margin-bottom:1rem;">🤖</div>
+                            <h4 style="font-size:1.1rem; margin-bottom:0.8rem; color:var(--text-color);">No repeating yourself</h4>
+                            <p class="text-muted" style="font-size:0.95rem;">AI collects your symptoms in advance</p>
+                        </div>
+                        <div class="value-card glass-card">
+                            <div style="font-size:2rem; margin-bottom:1rem;">💊</div>
+                            <h4 style="font-size:1.1rem; margin-bottom:0.8rem; color:var(--text-color);">No lost prescriptions</h4>
+                            <p class="text-muted" style="font-size:0.95rem;">Everything is sent directly to your email</p>
+                        </div>
+                        <div class="value-card glass-card">
+                            <div style="font-size:2rem; margin-bottom:1rem;">⚡</div>
+                            <h4 style="font-size:1.1rem; margin-bottom:0.8rem; color:var(--text-color);">No delayed urgent care</h4>
+                            <p class="text-muted" style="font-size:0.95rem;">Risk scoring ensures serious cases are seen first</p>
+                        </div>
+                        <div class="value-card glass-card">
+                            <div style="font-size:2rem; margin-bottom:1rem;">🖊️</div>
+                            <h4 style="font-size:1.1rem; margin-bottom:0.8rem; color:var(--text-color);">No more confusion</h4>
+                            <p class="text-muted" style="font-size:0.95rem;">Your doctor explains everything with visual tools</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technology and Values Grid -->
+                <div class="fs-grid" style="margin-top: 3rem;">
+                    
+                    <div class="card feature-card content-card">
+                        <div class="card-header">
+                            <div class="icon-wrapper feature-icon">🤖</div>
+                            <h3>Our Technology</h3>
+                        </div>
+                        <p class="about-text">At the heart of Pulseai is a powerful AI engine that:</p>
+                        <ul class="about-list" style="margin-top: 1rem;">
+                            <li>🎙️ Listens to your symptoms through a conversational chat interface</li>
+                            <li>📊 Analyzes the severity and urgency of your condition</li>
+                            <li>📄 Summarizes your case and delivers it to your doctor before your appointment</li>
+                            <li>🚨 Prioritizes high-risk patients automatically so critical cases are never delayed</li>
+                            <li>💊 Automates prescription delivery so you have everything you need the moment your consultation ends</li>
+                        </ul>
+                        <p class="about-text" style="margin-top:1.5rem;">We believe technology should feel invisible — working quietly in the background to make your experience smoother, faster, and more personal.</p>
+                    </div>
+
+                    <div class="card support-card content-card">
+                        <div class="card-header">
+                            <div class="icon-wrapper support-icon">⭐</div>
+                            <h3>Our Values</h3>
+                        </div>
+                        <ul class="about-list">
+                            <li><span style="font-size:1.3rem;">❤️</span> <div><strong>Care</strong> — Every feature we build starts with one question: does this help the patient?</div></li>
+                            <li><span style="font-size:1.3rem;">🔒</span> <div><strong>Privacy</strong> — Your personal health data is encrypted, protected, and never shared without your consent.</div></li>
+                            <li><span style="font-size:1.3rem;">⚡</span> <div><strong>Speed</strong> — We know that in healthcare, every minute counts. Our platform is built for fast, efficient experiences.</div></li>
+                            <li><span style="font-size:1.3rem;">🤝</span> <div><strong>Trust</strong> — We are transparent about how our technology works and committed to earning your confidence every day.</div></li>
+                            <li><span style="font-size:1.3rem;">🌍</span> <div><strong>Accessibility</strong> — Healthcare should not be a privilege. We are building tools that work for everyone.</div></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- Footer Summary Team & Join -->
+                <div class="card glass-card content-card text-center" style="margin-top: 3rem; margin-bottom: 2rem; border-top: 4px solid var(--primary-color);">
+                    <h2 class="section-title">Our Team & The Journey Ahead</h2>
+                    <p class="about-text" style="max-width: 800px; margin: 0 auto 2.5rem;">👨‍💻 We are a passionate team of developers, healthcare professionals, and designers who share one common belief — technology can make healthcare more human, not less. Every line of code we write is driven by empathy and a genuine desire to improve people's lives.</p>
+                    
+                    <h3 style="font-size:1.4rem; margin-bottom:1rem; color:var(--text-color);">🚀 Join Us on This Journey</h3>
+                    <p class="about-text" style="max-width: 800px; margin: 0 auto 2.5rem;">We are just getting started. Whether you are a patient looking for better care or a doctor looking for smarter tools, Pulseai is built for you. Together, we can transform the way the world experiences healthcare — one appointment at a time.</p>
+                    
+                    <div class="pill-badge" style="display:inline-block; font-size:1.1rem; padding:1rem 2rem; background: var(--primary-color); color:white; border-radius:30px;">
+                        Pulseai — Smarter Care, Faster Help, Every Time.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo">Pulse<span class="logo-highlight">ai</span></div>
+            <p>&copy; 2026 Pulseai. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
